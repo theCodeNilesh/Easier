@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // After 5 seconds redirect to another intent
                     Intent i = new Intent(getBaseContext(),
-                            HomeScreen.class);
+                            Login.class);
                     startActivity(i);
 
                     //Remove activity
