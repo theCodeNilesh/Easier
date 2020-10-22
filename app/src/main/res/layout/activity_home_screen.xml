@@ -24,7 +24,7 @@
                 android:id="@+id/menu_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
 
                 <ImageView
                     android:id="@+id/menu_ic"
@@ -32,7 +32,7 @@
                     android:layout_height="21dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="20dp"
                     android:src="@drawable/menu_ic"
 
                     />
@@ -43,7 +43,7 @@
                     android:layout_height="24dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="20dp"
                     android:src="@drawable/shopping_cart"
 
                     />
@@ -54,9 +54,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="36dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/searchbar_bg"
                 android:elevation="30dp"
                 android:gravity="center"
@@ -83,7 +83,7 @@
                 android:id="@+id/banner_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="24dp"
                 android:background="@color/bg_color"
                 android:clipToPadding="false" />
@@ -98,8 +98,8 @@
                     android:id="@+id/title_menu1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:elevation="3dp">
 
                     <TextView
@@ -133,8 +133,7 @@
                     android:id="@+id/first_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="-9dp"
+                    android:layout_marginTop="-10dp"
                     android:background="@color/bg_color"
                     android:clipToPadding="false" />
             </LinearLayout>
@@ -150,8 +149,8 @@
                     android:id="@+id/title_menu2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:elevation="3dp">
 
                     <TextView
@@ -185,8 +184,7 @@
                     android:id="@+id/second_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="-9dp"
+                    android:layout_marginTop="-10dp"
                     android:background="@color/bg_color" />
 
             </LinearLayout>
