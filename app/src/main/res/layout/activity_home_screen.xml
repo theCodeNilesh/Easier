@@ -84,111 +84,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="0dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:background="@color/bg_color"
                 android:clipToPadding="false" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/main_recycler"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:id="@+id/title_menu1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="3dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="New stock"
-                        android:textAllCaps="false"
-                        android:textColor="@color/txt_color"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="See all"
-                        android:textAllCaps="false"
-                        android:textColor="@color/green_color"
-                        android:textSize="14sp"
-
-                        />
-
-
-                </RelativeLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/first_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-10dp"
-                    android:background="@color/bg_color"
-                    android:clipToPadding="false" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="30dp"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:id="@+id/title_menu2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:elevation="3dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Vegetables "
-                        android:textAllCaps="false"
-                        android:textColor="@color/txt_color"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="See all"
-                        android:textAllCaps="false"
-                        android:textColor="@color/green_color"
-                        android:textSize="14sp"
-
-                        />
-
-
-                </RelativeLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/second_recycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-10dp"
-                    android:background="@color/bg_color" />
-
-            </LinearLayout>
-
+                android:layout_gravity="left|top"
+                android:layout_marginTop="20dp" />
 
         </LinearLayout>
 

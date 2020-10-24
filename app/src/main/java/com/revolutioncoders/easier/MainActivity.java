@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
         //Text Animation
 
         easier.setAlpha((float) 0.0);
-        
+        easier.setTranslationY(20);
 
-        easier.animate().alpha((float) 1.0).setDuration(400).setStartDelay(250);
+        easier.animate().alpha((float) 1.0).setDuration(800).setStartDelay(250);
+        easier.animate().translationY(0).setDuration(400).setStartDelay(250);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

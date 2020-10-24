@@ -9,17 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.revolutioncoders.easier.HelperClasses.HomeAdapter.BannerAdapter;
 import com.revolutioncoders.easier.HelperClasses.HomeAdapter.BannerHelperClass;
-import com.revolutioncoders.easier.HelperClasses.HomeAdapter.FirstAdapter;
-import com.revolutioncoders.easier.HelperClasses.HomeAdapter.FirstHelperClass;
-import com.revolutioncoders.easier.HelperClasses.HomeAdapter.SecondAdapter;
-import com.revolutioncoders.easier.HelperClasses.HomeAdapter.SecondHelperClass;
+import com.revolutioncoders.easier.adapter.MainRecyclerAdapter;
+import com.revolutioncoders.easier.model.AllCategory;
+import com.revolutioncoders.easier.model.CategoryItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
 
-    RecyclerView firstRecycler, bannerRecycler, secondRecycler;
+    RecyclerView bannerRecycler, mainCategoryRecycler;
     RecyclerView.Adapter adapter;
+
+    MainRecyclerAdapter mainRecyclerAdapter;
 
 
     @Override
@@ -28,29 +30,51 @@ public class HomeScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
         setContentView(R.layout.activity_home_screen);
 
-        firstRecycler = findViewById(R.id.first_recycler);
         bannerRecycler = findViewById(R.id.banner_recycler);
-        secondRecycler = findViewById(R.id.second_recycler);
 
-
-        firstRecycler();
         bannerRecycler();
-        secondRecycler();
+
+        List<CategoryItem> categoryItemList = new ArrayList<>();
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item1", "12 pcs - 500 to  900  gm"));
+
+
+        List<CategoryItem> categoryItemList2 = new ArrayList<>();
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item1", "12 pcs - 500 to  900  gm"));
+
+
+        List<CategoryItem> categoryItemList3 = new ArrayList<>();
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item1", "12 pcs - 500 to  900  gm"));
+
+
+        List<AllCategory> allCategoryList = new ArrayList<>();
+        allCategoryList.add(new AllCategory("New Stock", categoryItemList));
+        allCategoryList.add(new AllCategory("Chocolate", categoryItemList2));
+        allCategoryList.add(new AllCategory("Vegetables", categoryItemList3));
+        setMainCategoryRecycler(allCategoryList);
 
 
     }
 
-    private void secondRecycler() {
-        secondRecycler.setHasFixedSize(true);
-        secondRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        ArrayList<SecondHelperClass> secondLocations = new ArrayList<>();
-        secondLocations.add(new SecondHelperClass(R.drawable.test_img4, "Papaya", "12 pcs - 500 to  900  gm", "25"));
-        secondLocations.add(new SecondHelperClass(R.drawable.test_img5, "Potato", "12 pcs - 500 to  900  gm", "25"));
-        secondLocations.add(new SecondHelperClass(R.drawable.test_img1, "Bell Paper", "12 pcs - 500 to  900  gm", "25"));
 
-        adapter = new SecondAdapter((secondLocations));
+    private void setMainCategoryRecycler(List<AllCategory> allCategoryList) {
 
-        secondRecycler.setAdapter(adapter);
+        mainCategoryRecycler = findViewById(R.id.main_recycler);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        mainCategoryRecycler.setLayoutManager(layoutManager);
+        mainRecyclerAdapter = new MainRecyclerAdapter(this, allCategoryList);
+        mainCategoryRecycler.setAdapter(mainRecyclerAdapter);
     }
 
     private void bannerRecycler() {
@@ -68,20 +92,5 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
-    private void firstRecycler() {
 
-        firstRecycler.setHasFixedSize(true);
-        firstRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        ArrayList<FirstHelperClass> firstLocations = new ArrayList<>();
-
-        firstLocations.add(new FirstHelperClass(R.drawable.test_img1, "Bell Paper", "12 pcs - 500 to  900  gm", "29"));
-        firstLocations.add(new FirstHelperClass(R.drawable.test_img2, "Tomatto", "20 pcs - 500 to  900  gm", "13"));
-        firstLocations.add(new FirstHelperClass(R.drawable.test_img3, "Ginger", "3 pcs - 500 to  900  gm", "12"));
-
-        adapter = new FirstAdapter((firstLocations));
-
-        firstRecycler.setAdapter(adapter);
-
-    }
 }
