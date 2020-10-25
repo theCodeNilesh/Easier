@@ -36,32 +36,48 @@ public class HomeScreen extends AppCompatActivity {
 
         List<CategoryItem> categoryItemList = new ArrayList<>();
         categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
+        categoryItemList.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
 
 
         List<CategoryItem> categoryItemList2 = new ArrayList<>();
         categoryItemList2.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
+        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
 
 
         List<CategoryItem> categoryItemList3 = new ArrayList<>();
         categoryItemList3.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
+        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
+
+        List<CategoryItem> categoryItemList4 = new ArrayList<>();
+        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
+        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
+        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
+        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
+
+        List<CategoryItem> categoryItemList5 = new ArrayList<>();
+        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
+        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
+        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
+        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
+        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
 
 
         List<AllCategory> allCategoryList = new ArrayList<>();
         allCategoryList.add(new AllCategory("New Stock", categoryItemList));
         allCategoryList.add(new AllCategory("Chocolate", categoryItemList2));
         allCategoryList.add(new AllCategory("Vegetables", categoryItemList3));
+        allCategoryList.add(new AllCategory("Fruits", categoryItemList4));
+        allCategoryList.add(new AllCategory("Others", categoryItemList5));
         setMainCategoryRecycler(allCategoryList);
 
 

@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginStart="16dp"
-                android:text="See All"
+                android:text="See all"
                 android:textAllCaps="false"
                 android:textColor="@color/green_color"
                 android:textSize="14sp" />
@@ -55,7 +55,7 @@
             android:id="@+id/item_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="-14dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
