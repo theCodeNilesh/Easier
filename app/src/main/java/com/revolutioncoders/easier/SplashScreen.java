@@ -19,7 +19,7 @@ public class SplashScreen extends AppCompatActivity {
 
         TextView easier;
 
-        easier = (TextView) findViewById(R.id.easier);
+        easier = findViewById(R.id.easier);
 
 
         //Text Animation
@@ -51,12 +51,13 @@ public class SplashScreen extends AppCompatActivity {
 
                     // After 5 seconds redirect to another intent
                     Intent i = new Intent(getBaseContext(),
-                            Login.class);
+                            SplashScreen.class);
                     startActivity(i);
 
                     //Remove activity
                     finish();
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         };
