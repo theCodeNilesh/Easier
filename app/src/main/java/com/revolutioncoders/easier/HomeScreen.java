@@ -1,28 +1,47 @@
 package com.revolutioncoders.easier;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.revolutioncoders.easier.HelperClasses.HomeAdapter.BannerAdapter;
 import com.revolutioncoders.easier.HelperClasses.HomeAdapter.BannerHelperClass;
 import com.revolutioncoders.easier.adapter.MainRecyclerAdapter;
 import com.revolutioncoders.easier.model.AllCategory;
 import com.revolutioncoders.easier.model.CategoryItem;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static com.revolutioncoders.easier.URLenv.category;
+import static com.revolutioncoders.easier.URLenv.product;
 
 public class HomeScreen extends AppCompatActivity {
 
     RecyclerView bannerRecycler, mainCategoryRecycler;
     RecyclerView.Adapter adapter;
-
+    RequestQueue requestQueue;
     MainRecyclerAdapter mainRecyclerAdapter;
-
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,56 +50,63 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         bannerRecycler = findViewById(R.id.banner_recycler);
-
+        requestQueue = Volley.newRequestQueue(getApplicationContext());
         bannerRecycler();
 
-        List<CategoryItem> categoryItemList = new ArrayList<>();
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
-        categoryItemList.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
+        Intent intent = getIntent();
+        Bundle args = intent.getBundleExtra("BUNDLE");
+        final ArrayList<String> cat_array = (ArrayList<String>) args.getSerializable("ARRAYLIST");
 
-
-        List<CategoryItem> categoryItemList2 = new ArrayList<>();
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
-        categoryItemList2.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
-
-
-        List<CategoryItem> categoryItemList3 = new ArrayList<>();
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
-        categoryItemList3.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
-
-        List<CategoryItem> categoryItemList4 = new ArrayList<>();
-        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
-        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
-        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
-        categoryItemList4.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
-
-        List<CategoryItem> categoryItemList5 = new ArrayList<>();
-        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img1, "30", "Item1", "12 pcs - 500 to  900  gm"));
-        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img2, "30", "Item2", "12 pcs - 500 to  900  gm"));
-        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img3, "30", "Item3", "12 pcs - 500 to  900  gm"));
-        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img4, "30", "Item4", "12 pcs - 500 to  900  gm"));
-        categoryItemList5.add(new CategoryItem(1, R.drawable.test_img5, "30", "Item5", "12 pcs - 500 to  900  gm"));
+        Bundle args1 = intent.getBundleExtra("BUNDLE1");
+        final ArrayList<String> cat_id = (ArrayList<String>) args1.getSerializable("ARRAYLIST1");
 
 
         List<AllCategory> allCategoryList = new ArrayList<>();
-        allCategoryList.add(new AllCategory("New Stock", categoryItemList));
-        allCategoryList.add(new AllCategory("Chocolate", categoryItemList2));
-        allCategoryList.add(new AllCategory("Vegetables", categoryItemList3));
-        allCategoryList.add(new AllCategory("Fruits", categoryItemList4));
-        allCategoryList.add(new AllCategory("Others", categoryItemList5));
+        for(i = 0; i < cat_array.size(); i++){
+            Log.d("p", cat_array.get(i));
+            getData(cat_id.get(i), cat_array.get(i), allCategoryList);
+        }
         setMainCategoryRecycler(allCategoryList);
 
 
+    }
+    private void getData(final String i , final String cat , final List<AllCategory> all){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,product ,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("p1", String.valueOf(i));
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            JSONArray jsonArray = object.getJSONArray("data");
+                            for (int j = 0; j < jsonArray.length(); j++) {
+                                JSONObject obj = jsonArray.getJSONObject(j);
+                                String name = obj.getString("name");
+                                String price = obj.getString("price");
+                                Log.d("n1",cat);
+                                Log.d("n",name);
+                                List<CategoryItem> categoryItemList = new ArrayList<>();
+                                categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, price, name, "12 pcs - 500 to  900  gm"));
+                                all.add(new AllCategory(cat, categoryItemList));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("cat_id", String.valueOf(i));
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
     }
 
 
