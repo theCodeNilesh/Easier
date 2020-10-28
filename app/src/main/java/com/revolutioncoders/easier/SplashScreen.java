@@ -68,7 +68,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 try {
                     // Thread will sleep for 5 seconds
-                    sleep(1300);
+                    sleep(500);
                     StringRequest stringRequest = new StringRequest(Request.Method.POST,category ,
                             new Response.Listener<String>() {
                                 @Override

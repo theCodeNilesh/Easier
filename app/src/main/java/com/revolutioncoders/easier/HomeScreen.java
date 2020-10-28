@@ -66,7 +66,12 @@ public class HomeScreen extends AppCompatActivity {
             Log.d("p", cat_array.get(i));
             getData(cat_id.get(i), cat_array.get(i), allCategoryList);
         }
-        setMainCategoryRecycler(allCategoryList);
+        try {
+            Thread.sleep(500);
+            setMainCategoryRecycler(allCategoryList);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -77,18 +82,25 @@ public class HomeScreen extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("p1", String.valueOf(i));
                         try {
+                            int flag = 0;
                             JSONObject object = new JSONObject(response);
                             JSONArray jsonArray = object.getJSONArray("data");
+                            List<CategoryItem> categoryItemList = new ArrayList<>();
                             for (int j = 0; j < jsonArray.length(); j++) {
                                 JSONObject obj = jsonArray.getJSONObject(j);
                                 String name = obj.getString("name");
                                 String price = obj.getString("price");
                                 Log.d("n1",cat);
                                 Log.d("n",name);
-                                List<CategoryItem> categoryItemList = new ArrayList<>();
-                                categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, price, name, "12 pcs - 500 to  900  gm"));
-                                all.add(new AllCategory(cat, categoryItemList));
+                                if(name.equals(""))
+                                    flag =0;
+                                else {
+                                    categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, price, name, "12 pcs - 500 to  900  gm"));
+                                    flag=1;
+                                }
                             }
+                            if(flag==1)
+                                all.add(new AllCategory(cat, categoryItemList));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
