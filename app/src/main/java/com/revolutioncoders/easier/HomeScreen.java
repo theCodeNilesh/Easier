@@ -3,7 +3,9 @@ package com.revolutioncoders.easier;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,13 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.revolutioncoders.easier.URLenv.category;
 import static com.revolutioncoders.easier.URLenv.product;
 
 public class HomeScreen extends AppCompatActivity {
@@ -41,6 +41,9 @@ public class HomeScreen extends AppCompatActivity {
     RecyclerView.Adapter adapter;
     RequestQueue requestQueue;
     MainRecyclerAdapter mainRecyclerAdapter;
+    EditText searchbar;
+
+
     int i;
 
     @Override
@@ -49,9 +52,20 @@ public class HomeScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAGS_CHANGED, WindowManager.LayoutParams.FLAGS_CHANGED);
         setContentView(R.layout.activity_home_screen);
 
+        searchbar = findViewById(R.id.searchbar);
+
         bannerRecycler = findViewById(R.id.banner_recycler);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         bannerRecycler();
+
+
+        searchbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, ProductScreen.class);
+                startActivity(intent);
+            }
+        });
 
         Intent intent = getIntent();
         Bundle args = intent.getBundleExtra("BUNDLE");
@@ -62,7 +76,7 @@ public class HomeScreen extends AppCompatActivity {
 
 
         List<AllCategory> allCategoryList = new ArrayList<>();
-        for(i = 0; i < cat_array.size(); i++){
+        for (i = 0; i < cat_array.size(); i++) {
             Log.d("p", cat_array.get(i));
             getData(cat_id.get(i), cat_array.get(i), allCategoryList);
         }
@@ -75,8 +89,9 @@ public class HomeScreen extends AppCompatActivity {
 
 
     }
-    private void getData(final String i , final String cat , final List<AllCategory> all){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,product ,
+
+    private void getData(final String i, final String cat, final List<AllCategory> all) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, product,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -90,16 +105,16 @@ public class HomeScreen extends AppCompatActivity {
                                 JSONObject obj = jsonArray.getJSONObject(j);
                                 String name = obj.getString("name");
                                 String price = obj.getString("price");
-                                Log.d("n1",cat);
-                                Log.d("n",name);
-                                if(name.equals(""))
-                                    flag =0;
+                                Log.d("n1", cat);
+                                Log.d("n", name);
+                                if (name.equals(""))
+                                    flag = 0;
                                 else {
                                     categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, price, name, "12 pcs - 500 to  900  gm"));
-                                    flag=1;
+                                    flag = 1;
                                 }
                             }
-                            if(flag==1)
+                            if (flag == 1)
                                 all.add(new AllCategory(cat, categoryItemList));
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -120,7 +135,6 @@ public class HomeScreen extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
-
 
     private void setMainCategoryRecycler(List<AllCategory> allCategoryList) {
 

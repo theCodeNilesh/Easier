@@ -64,6 +64,7 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/searchbar"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:background="@drawable/searchbar_bg"
