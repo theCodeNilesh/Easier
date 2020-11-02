@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -43,6 +44,8 @@ public class HomeScreen extends AppCompatActivity {
     MainRecyclerAdapter mainRecyclerAdapter;
     EditText searchbar;
 
+    ImageView cart_ic;
+
 
     int i;
 
@@ -53,6 +56,7 @@ public class HomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         searchbar = findViewById(R.id.searchbar);
+        cart_ic = findViewById(R.id.cart_ic);
 
         bannerRecycler = findViewById(R.id.banner_recycler);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -63,6 +67,14 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, ProductScreen.class);
+                startActivity(intent);
+            }
+        });
+
+        searchbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, Cart.class);
                 startActivity(intent);
             }
         });

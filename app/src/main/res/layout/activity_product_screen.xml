@@ -44,7 +44,7 @@
         android:id="@+id/img"
         android:layout_width="241dp"
         android:layout_height="241dp"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="35dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="50dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
             android:layout_height="match_parent"
             android:background="@color/bg_color"
             android:scaleType="centerCrop"
-            android:src="@drawable/test_img1" />
+            android:src="@drawable/test_img2" />
     </androidx.cardview.widget.CardView>
 
 
