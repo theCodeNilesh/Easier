@@ -80,7 +80,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/add_to_cart"
+        app:layout_constraintBottom_toTopOf="@+id/complete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nested">
@@ -129,7 +129,7 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/add_to_cart"
+        android:id="@+id/complete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -146,7 +146,7 @@
         app:layout_constraintTop_toBottomOf="@+id/total_layout">
 
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/complete_btn"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:background="#00000000"
