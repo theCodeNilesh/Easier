@@ -1,12 +1,13 @@
 package com.revolutioncoders.easier.model;
 
+import android.graphics.Bitmap;
+
 public class CategoryItem {
 
     Integer itemId;
-    Integer imageUrl;
-    String price, title, subtxt;
+    String price, title, subtxt, imageUrl;
 
-    public CategoryItem(Integer itemId, Integer imageUrl, String price, String title, String subtxt) {
+    public CategoryItem(Integer itemId, String imageUrl, String price, String title, String subtxt) {
         this.itemId = itemId;
         this.imageUrl = imageUrl;
         this.price = price;
@@ -22,11 +23,11 @@ public class CategoryItem {
         this.itemId = itemId;
     }
 
-    public Integer getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(Integer imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 

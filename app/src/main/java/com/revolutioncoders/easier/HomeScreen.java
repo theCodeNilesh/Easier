@@ -43,7 +43,6 @@ public class HomeScreen extends AppCompatActivity {
     RequestQueue requestQueue;
     MainRecyclerAdapter mainRecyclerAdapter;
     EditText searchbar;
-
     ImageView cart_ic;
 
 
@@ -71,7 +70,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
-        searchbar.setOnClickListener(new View.OnClickListener() {
+        cart_ic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, Cart.class);
@@ -116,13 +115,16 @@ public class HomeScreen extends AppCompatActivity {
                             for (int j = 0; j < jsonArray.length(); j++) {
                                 JSONObject obj = jsonArray.getJSONObject(j);
                                 String name = obj.getString("name");
+                                int id = obj.getInt("product_id");
                                 String price = obj.getString("price");
+                                String des = obj.getString("in_stock");
+                                String image = obj.getString("image");
                                 Log.d("n1", cat);
                                 Log.d("n", name);
                                 if (name.equals(""))
                                     flag = 0;
                                 else {
-                                    categoryItemList.add(new CategoryItem(1, R.drawable.test_img1, price, name, "12 pcs - 500 to  900  gm"));
+                                    categoryItemList.add(new CategoryItem(id, image, price, name, des));
                                     flag = 1;
                                 }
                             }
