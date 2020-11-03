@@ -43,7 +43,7 @@ public class HomeScreen extends AppCompatActivity {
     RequestQueue requestQueue;
     MainRecyclerAdapter mainRecyclerAdapter;
     EditText searchbar;
-    ImageView cart_ic;
+    ImageView cart_ic, menu_ic;
 
 
     int i;
@@ -56,6 +56,7 @@ public class HomeScreen extends AppCompatActivity {
 
         searchbar = findViewById(R.id.searchbar);
         cart_ic = findViewById(R.id.cart_ic);
+        menu_ic = findViewById(R.id.menu_ic);
 
         bannerRecycler = findViewById(R.id.banner_recycler);
         requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -74,6 +75,14 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, Cart.class);
+                startActivity(intent);
+            }
+        });
+
+        menu_ic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeScreen.this, Profile.class);
                 startActivity(intent);
             }
         });
