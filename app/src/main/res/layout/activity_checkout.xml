@@ -336,7 +336,7 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <Button
-            android:id="@+id/login_btn"
+            android:id="@+id/proceed_btn"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:background="#00000000"
