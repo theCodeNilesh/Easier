@@ -1,10 +1,14 @@
 package com.revolutioncoders.easier;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +27,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +43,7 @@ public class ProductScreen extends AppCompatActivity {
     RequestQueue requestQueue;
     TextView title, quantity, priceView, details;
     Button btn;
+    ImageView imgView, plus, minus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,9 @@ public class ProductScreen extends AppCompatActivity {
         priceView = findViewById(R.id.first_rc_price);
         details = findViewById(R.id.product_details);
         btn = findViewById(R.id.add_cart);
+        imgView = findViewById(R.id.first_rc_img);
+        plus = findViewById(R.id.plus);
+        minus = findViewById(R.id.minus);
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         Log.d("id", String.valueOf(id));
@@ -67,9 +78,11 @@ public class ProductScreen extends AppCompatActivity {
                                 int id = obj.getInt("product_id");
                                 String price = obj.getString("price");
                                 String des = obj.getString("in_stock");
+                                String img = obj.getString("image");
                                 title.setText(name);
                                 priceView.setText(price);
                                 details.setText(des);
+                                new ImageLoadTask(img, imgView).execute();
                                 Log.d("name", name);
                             }
                         } catch (JSONException e) {
@@ -91,11 +104,67 @@ public class ProductScreen extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
 
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString()) + 1));
+                Log.d("hi",quantity.getText().toString());
+                if(Integer.parseInt(quantity.getText().toString()) > 1 ) {
+                    minus.setEnabled(true);
+                }
+            }
+        });
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantity.setText(String.valueOf(Integer.parseInt(quantity.getText().toString()) - 1));
+
+                Log.d("hi",quantity.getText().toString());
+                if(Integer.parseInt(quantity.getText().toString()) < 1 ) {
+                    minus.setEnabled(false);
+                }
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+    }
+    public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
+
+        private String url;
+        private ImageView imageView;
+
+        public ImageLoadTask(String url, ImageView imageView) {
+            this.url = url;
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+            try {
+                URL urlConnection = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) urlConnection
+                        .openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+            imageView.setImageBitmap(result);
+        }
+
     }
 }

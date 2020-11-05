@@ -159,7 +159,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/poppins_regular"
-                android:text="1 Kg"
+                android:text="1"
                 android:textColor="@color/txt_color"
                 android:textSize="18sp" />
 
