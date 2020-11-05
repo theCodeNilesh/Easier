@@ -162,153 +162,54 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                        <RadioButton
+                            android:id="@+id/radio_button1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:buttonTint="@color/txt_color"
+                            android:checked="true"
+                            android:fontFamily="@font/poppins_medium"
+                            android:paddingLeft="20dp"
+                            android:text="Cash on delivery"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/txt_color"
+                            android:textSize="16dp"
+                            />
 
-                            <RadioButton
-                                android:id="@+id/radio_button1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                android:layout_margin="3dp"
-                                android:buttonTint="@color/txt_color"
-                                android:checked="true"
-                                android:fontFamily="@font/poppins_regular"
-                                android:textAlignment="textStart"
-                                android:textColor="@color/txt_color"
-                                android:textSize="14dp" />
+                        <RadioButton
+                            android:id="@+id/radio_button2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:buttonTint="@color/txt_color"
+                            android:checked="false"
+                            android:fontFamily="@font/poppins_medium"
+                            android:paddingLeft="20dp"
+                            android:text="Card"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/txt_color"
+                            android:textSize="16dp"
+                            />
 
-                            <ImageView
-                                android:id="@+id/cash_ic"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="20dp"
-                                android:layout_toRightOf="@+id/radio_button1"
-                                android:src="@drawable/cashondel" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="15dp"
-                                android:layout_toRightOf="@+id/cash_ic"
-                                android:fontFamily="@font/poppins_regular"
-                                android:text="Cash on delivery"
-                                android:textAllCaps="false"
-                                android:textColor="@color/txt_color"
-                                android:textSize="16sp" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="2dp"
-                                android:layout_below="@+id/cash_ic"
-                                android:layout_alignParentLeft="true"
-                                android:layout_marginStart="50dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:background="#B7B7B7" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <RadioButton
-                                android:id="@+id/radio_button2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                android:layout_margin="3dp"
-                                android:buttonTint="@color/txt_color"
-                                android:checked="false"
-                                android:fontFamily="@font/poppins_regular"
-                                android:textAlignment="textStart"
-                                android:textColor="@color/txt_color"
-                                android:textSize="14dp" />
-
-                            <ImageView
-                                android:id="@+id/card_ic"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="20dp"
-                                android:layout_toRightOf="@+id/radio_button2"
-                                android:src="@drawable/cardpay" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="15dp"
-                                android:layout_toRightOf="@+id/card_ic"
-                                android:fontFamily="@font/poppins_regular"
-                                android:text="Card"
-                                android:textAllCaps="false"
-                                android:textColor="@color/txt_color"
-                                android:textSize="16sp" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_below="@+id/card_ic"
-                                android:layout_alignParentLeft="true"
-                                android:layout_marginStart="50dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:background="#B7B7B7" />
-
-                        </RelativeLayout>
+                        <RadioButton
+                            android:id="@+id/radio_button3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:buttonTint="@color/txt_color"
+                            android:checked="false"
+                            android:fontFamily="@font/poppins_medium"
+                            android:paddingLeft="20dp"
+                            android:text="UPI"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/txt_color"
+                            android:textSize="16dp"
+                            />
 
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="10dp">
-
-                            <RadioButton
-                                android:id="@+id/radio_button3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentLeft="true"
-                                android:layout_centerVertical="true"
-                                android:layout_margin="3dp"
-                                android:buttonTint="@color/txt_color"
-                                android:checked="false"
-                                android:fontFamily="@font/poppins_regular"
-                                android:textAlignment="textStart"
-                                android:textColor="@color/txt_color"
-                                android:textSize="14dp" />
-
-                            <ImageView
-                                android:id="@+id/upi_ic"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="20dp"
-                                android:layout_toRightOf="@+id/radio_button3"
-                                android:src="@drawable/upi" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="15dp"
-                                android:layout_toRightOf="@+id/upi_ic"
-                                android:fontFamily="@font/poppins_regular"
-                                android:text="UPI"
-                                android:textAllCaps="false"
-                                android:textColor="@color/txt_color"
-                                android:textSize="16sp" />
-
-                        </RelativeLayout>
 
                     </RadioGroup>
-
 
                 </LinearLayout>
 

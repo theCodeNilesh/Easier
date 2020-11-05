@@ -72,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
-        android:text="We'll reach you  soon .. !"
+        android:text="We'll reach you soon .. !"
         android:textAllCaps="false"
         android:textColor="@color/txt_color"
         android:textSize="18sp"
