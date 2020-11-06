@@ -1,18 +1,30 @@
 package com.revolutioncoders.easier.HelperClasses.HomeAdapter;
 
+import android.widget.ImageView;
+
 public class CartHelperClass {
 
-    int image;
-    String title, price, quantity;
+    String title, price, quantity,image;
+    int id,pid;
 
-    public CartHelperClass(int image, String title, String price, String quantity) {
+    public int getPid() {
+        return pid;
+    }
+
+    public CartHelperClass(String  image, String title, String price, String quantity, int id, int pid) {
         this.image = image;
         this.title = title;
         this.price = price;
         this.quantity = quantity;
+        this.id = id;
+        this.pid = pid;
     }
 
-    public int getImage() {
+    public int getId() {
+        return id;
+    }
+
+    public String getImage() {
         return image;
     }
 
@@ -27,4 +39,5 @@ public class CartHelperClass {
     public String getQuantity() {
         return quantity;
     }
+
 }

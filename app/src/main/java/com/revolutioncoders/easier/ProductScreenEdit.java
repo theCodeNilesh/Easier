@@ -21,7 +21,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.revolutioncoders.easier.model.AllCategory;
 import com.revolutioncoders.easier.model.CategoryItem;
 
 import org.json.JSONArray;
@@ -37,9 +36,11 @@ import java.util.List;
 import java.util.Map;
 
 import static com.revolutioncoders.easier.URLenv.add_to_cart;
+import static com.revolutioncoders.easier.URLenv.edit_from_cart;
 import static com.revolutioncoders.easier.URLenv.product_details;
+import static com.revolutioncoders.easier.URLenv.product_details_edit;
 
-public class ProductScreen extends AppCompatActivity {
+public class ProductScreenEdit extends AppCompatActivity {
 
     RequestQueue requestQueue;
     TextView title, quantity, priceView, details;
@@ -52,7 +53,8 @@ public class ProductScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_screen);
         Bundle intent = getIntent().getExtras();
-        final int id = intent.getInt("id");
+        final int id = intent.getInt("pid");
+        final int cart_id = intent.getInt("id");
 
         title = findViewById(R.id.product_name);
         quantity = findViewById(R.id.quantity);
@@ -68,14 +70,13 @@ public class ProductScreen extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         Log.d("id", String.valueOf(id));
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, product_details,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, product_details_edit,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject object = new JSONObject(response);
                             JSONArray jsonArray = object.getJSONArray("data");
-                            List<CategoryItem> categoryItemList = new ArrayList<>();
                             for (int j = 0; j < jsonArray.length(); j++) {
                                 JSONObject obj = jsonArray.getJSONObject(j);
                                 String name = obj.getString("name");
@@ -86,6 +87,7 @@ public class ProductScreen extends AppCompatActivity {
                                 title.setText(name);
                                 priceView.setText(price);
                                 details.setText(des);
+                                quantity.setText(obj.getString("quantity"));
                                 new ImageLoadTask(img, imgView).execute();
                                 Log.d("name", name);
                             }
@@ -103,6 +105,7 @@ public class ProductScreen extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("id", String.valueOf(id));
+                params.put("cid", String.valueOf(cart_id));
                 return params;
             }
         };
@@ -140,7 +143,7 @@ public class ProductScreen extends AppCompatActivity {
         cart_ic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProductScreen.this, Cart.class);
+                Intent intent = new Intent(ProductScreenEdit.this, Cart.class);
                 startActivity(intent);
             }
         });
@@ -148,14 +151,12 @@ public class ProductScreen extends AppCompatActivity {
         add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest strRequest = new StringRequest(Request.Method.POST, add_to_cart,
+                StringRequest strRequest = new StringRequest(Request.Method.POST, edit_from_cart,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                if(response.equals("false"))
-                                    Toast.makeText(ProductScreen.this,"Product Already in Cart", Toast.LENGTH_LONG).show();
-                                else
-                                    Toast.makeText(ProductScreen.this,"Product Added Successfully",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(),"Product Updated Successfully",Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(ProductScreenEdit.this,Cart.class));finish();
                             }
                         }, new Response.ErrorListener() {
                     @Override

@@ -17,6 +17,7 @@
         <activity android:name=".Checkout" />
         <activity android:name=".Cart" />
         <activity android:name=".ProductScreen" />
+        <activity android:name=".ProductScreenEdit" />
         <activity android:name=".Login" />
         <activity android:name=".HomeScreen" />
         <activity
