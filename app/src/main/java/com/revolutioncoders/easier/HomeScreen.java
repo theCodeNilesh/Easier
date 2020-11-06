@@ -74,7 +74,7 @@ public class HomeScreen extends AppCompatActivity {
         cart_ic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeScreen.this, Cart.class);
+                Intent intent = new Intent(HomeScreen.this, SeeAll.class);
                 startActivity(intent);
             }
         });

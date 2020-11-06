@@ -63,10 +63,7 @@
                 android:layout_marginStart="0dp"
                 android:background="#EDF6FC"
                 android:clipToPadding="false"
-                android:overScrollMode="never"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/menu_layout" />
+                android:overScrollMode="never" />
 
         </LinearLayout>
 
