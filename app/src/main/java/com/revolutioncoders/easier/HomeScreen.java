@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,8 +42,9 @@ public class HomeScreen extends AppCompatActivity {
     RecyclerView.Adapter adapter;
     RequestQueue requestQueue;
     MainRecyclerAdapter mainRecyclerAdapter;
-    EditText searchbar;
+
     ImageView cart_ic, menu_ic;
+    SearchView searchbar;
 
 
     int i;

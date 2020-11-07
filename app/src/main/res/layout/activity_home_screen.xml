@@ -63,20 +63,14 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
-                <EditText
+                <SearchView
                     android:id="@+id/searchbar"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
+                    android:backgroundTint="#ffff"
                     android:background="@drawable/searchbar_bg"
-                    android:drawableEnd="@drawable/ic_baseline_search_24"
-                    android:fontFamily="@font/poppins_light"
-                    android:hint="Search..."
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textColorHint="@color/txt_ligh_color"
-                    android:textSize="14sp"
-
-
+                    android:closeIcon="@drawable/ic_baseline_close_24"
+                    android:searchIcon="@drawable/ic_baseline_search_24"
                     />
 
             </LinearLayout>
