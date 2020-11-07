@@ -10,4 +10,5 @@ public class URLenv {
     public static String get_cart = ip + "get_cart.php";
     public static String edit_from_cart = ip + "edit_from_cart.php";
     public static String del_from_cart = ip + "del_from_cart.php";
+    public static String send_otp = ip + "sendOTP.php";
 }

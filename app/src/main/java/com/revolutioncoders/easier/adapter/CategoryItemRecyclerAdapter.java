@@ -106,6 +106,11 @@ public class CategoryItemRecyclerAdapter extends RecyclerView.Adapter<CategoryIt
         }
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
         protected Bitmap doInBackground(Void... params) {
             try {
                 URL urlConnection = new URL(url);

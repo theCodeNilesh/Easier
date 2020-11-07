@@ -1,6 +1,7 @@
 package com.revolutioncoders.easier;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -46,6 +47,7 @@ public class ProductScreen extends AppCompatActivity {
     Button btn, add_cart;
     ImageView imgView, plus, minus, cart_ic;
     int pid;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,8 +142,16 @@ public class ProductScreen extends AppCompatActivity {
         cart_ic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProductScreen.this, Cart.class);
-                startActivity(intent);
+
+                sp = getSharedPreferences("login", MODE_PRIVATE);
+                if (sp.getBoolean("logged", true)) {
+                    Toast.makeText(getApplicationContext(),"Login First Before you can place Order",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(ProductScreen.this, Login.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(ProductScreen.this, Cart.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -172,7 +182,15 @@ public class ProductScreen extends AppCompatActivity {
                         return params;
                     }
                 };
-                requestQueue.add(strRequest);
+                sp = getSharedPreferences("login", MODE_PRIVATE);
+                if (sp.getBoolean("logged", true)) {
+                    Toast.makeText(getApplicationContext(),"Login First Before you can place Order",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(ProductScreen.this, Login.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    requestQueue.add(strRequest);
+                }
             }
         });
     }

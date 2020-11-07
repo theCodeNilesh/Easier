@@ -80,7 +80,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     }
 
 
-    public static class CartViewHolder extends RecyclerView.ViewHolder {
+    public class CartViewHolder extends RecyclerView.ViewHolder {
 
         ImageView image,edit,del;
         TextView title, price, quantity;
@@ -116,8 +116,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                                 @Override
                                 public void onResponse(String response) {
                                     Toast.makeText(itemView.getContext(),"Item Deleted Successfully",Toast.LENGTH_LONG).show();
-                                    itemView.getContext().startActivity(new Intent(itemView.getContext(), Cart.class));
-                                    ((Activity)itemView.getContext()).finish();
+                                        notifyDataSetChanged();
+                                        itemView.invalidate();
+//                                    itemView.getContext().startActivity(new Intent(itemView.getContext(), Cart.class));
+//                                    ((Activity)itemView.getContext()).finish();
                                 }
                             }, new Response.ErrorListener() {
                         @Override
